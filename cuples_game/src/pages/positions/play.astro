@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+import GameLayout from '../../layouts/GameLayout.astro';
+
+const entries = await getCollection('positions');
+const payload = entries.map((e) => ({
+  id: e.data.id,
+  title: e.data.title,
+  image: e.data.image,
+  tags: e.data.tags ?? [],
+  slug: e.slug,
+}));
+---
+
+<GameLayout title="Positions — play" description="Random position suggestions">
+  <h1 style="margin-top: 0;">Play</h1>
+  <p style="color: var(--color-muted);">Scaffold: client script uses the embedded list for random picks.</p>
+  <div id="positions-root" data-positions={JSON.stringify(payload)}></div>
+  <p><a href="/positions/">Back to positions hub</a></p>
+</GameLayout>
+
+<script>
+  import { pickNUnique } from '../../lib/random';
+
+  const root = document.getElementById('positions-root');
+  if (!root) throw new Error('#positions-root missing');
+
+  type PositionItem = {
+    id: string;
+    title: string;
+    image: string;
+    tags: string[];
+    slug: string;
+  };
+
+  const raw = root.getAttribute('data-positions');
+  const positions: PositionItem[] = raw ? JSON.parse(raw) : [];
+
+  const controls = document.createElement('div');
+  controls.innerHTML = `
+    <p>
+      <button type="button" id="btn-one">Random one</button>
+      <button type="button" id="btn-three">Random three</button>
+    </p>
+    <output id="out" style="display:block;white-space:pre-wrap;color:var(--color-muted);"></output>
+  `;
+  root.appendChild(controls);
+
+  const out = controls.querySelector('#out');
+  const render = (items: PositionItem[]) => {
+    if (!out) return;
+    out.textContent = items.length
+      ? items.map((p) => `${p.title} (${p.id})`).join('\n')
+      : 'No positions in content yet.';
+  };
+
+  controls.querySelector('#btn-one')?.addEventListener('click', () => {
+    render(pickNUnique(positions, 1));
+  });
+  controls.querySelector('#btn-three')?.addEventListener('click', () => {
+    render(pickNUnique(positions, 3));
+  });
+</script>

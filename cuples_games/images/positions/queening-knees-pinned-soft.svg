@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Queening — soft knee placement">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="hsl(323 32% 16%)"/>
+      <stop offset="100%" stop-color="hsl(11 28% 10%)"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <text x="320" y="36" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="13" font-family="system-ui,sans-serif">Queening — soft knee placement</text>
+  <rect x="60" y="200" width="520" height="24" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+        <g transform="translate(240 200) rotate(88) scale(1)">
+      <circle cx="0" cy="-42" r="14" fill="hsl(323 42% 72%)" opacity="0.95"/>
+      <path d="M0 -28 L0 28" stroke="hsl(323 42% 72%)" stroke-width="10" stroke-linecap="round"/>
+      <path d="M0 -8 L-22 18 M0 -8 L22 18" stroke="hsl(323 42% 72%)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M0 28 L-14 58 M0 28 L14 58" stroke="hsl(323 42% 72%)" stroke-width="9" stroke-linecap="round"/>
+    </g>
+        <g transform="translate(400 255) rotate(-55) scale(0.9)">
+      <circle cx="0" cy="-42" r="14" fill="hsl(11 38% 68%)" opacity="0.95"/>
+      <path d="M0 -28 L0 28" stroke="hsl(11 38% 68%)" stroke-width="10" stroke-linecap="round"/>
+      <path d="M0 -8 L-22 18 M0 -8 L22 18" stroke="hsl(11 38% 68%)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M0 28 L-14 58 M0 28 L14 58" stroke="hsl(11 38% 68%)" stroke-width="9" stroke-linecap="round"/>
+    </g>
+  <text x="320" y="348" text-anchor="middle" fill="rgba(255,255,255,0.28)" font-size="11" font-family="system-ui,sans-serif">Abstract diagram — not to scale</text>
+</svg>

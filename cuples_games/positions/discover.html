@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discover — Positions — Couples Games</title>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/positions.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header site-header--compact">
+      <p class="crumb">
+        <a href="index.html">Positions</a> · <a href="../index.html">Home</a>
+      </p>
+      <h1>Discover</h1>
+      <p class="lede">One random card from the deck.</p>
+    </header>
+    <main id="main" class="positions-discover">
+      <p class="discover-status" id="discover-status" role="status" aria-live="polite"></p>
+      <div class="discover-stage" id="discover-stage">
+        <ul class="positions-hub positions-hub--single" aria-label="Random pick">
+          <li>
+            <div
+              id="discover-card"
+              class="positions-hub-card positions-hub-card--static discover-card"
+              role="region"
+              aria-labelledby="discover-card-title"
+            >
+              <div class="discover-card-body">
+                <span class="positions-hub-card-no" id="discover-card-no"></span>
+                <span class="positions-hub-title" id="discover-card-title">Loading…</span>
+                <div class="discover-card-visual discover-card-visual--empty" id="discover-card-visual">
+                  <img
+                    id="discover-card-img"
+                    class="discover-card-img"
+                    alt=""
+                    decoding="async"
+                  />
+                </div>
+                <div class="discover-card-bottom" id="discover-card-sub"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="discover-actions">
+        <button type="button" class="button button-shuffle" id="btn-shuffle" aria-label="Shuffle another card">
+          <svg
+            class="btn-shuffle-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M10.59 9.17 5.41 4 4 5.41l5.17 5.17 1.42-1.41zm3.91-5.17L16.54 6l-12.13 12.59L5.82 20 17.96 7.46 20 9.5V4h-5.5zm5.43 9.17-1.41-1.41-5.17 5.17L14.5 20H20V9.5l-2.04 2.04-3.03-3.03z"
+            />
+          </svg>
+          Shuffle
+        </button>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <p><a href="index.html">← Positions hub</a></p>
+    </footer>
+    <script src="../js/positions/positions-deck-data.js" defer></script>
+    <script src="../js/positions/discover.js" defer></script>
+  </body>
+</html>

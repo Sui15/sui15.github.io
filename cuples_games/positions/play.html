@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Play — Positions — Couples Games</title>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/positions.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header site-header--compact">
+      <p class="crumb">
+        <a href="index.html">Positions</a> · <a href="../index.html">Home</a>
+      </p>
+      <h1>Play</h1>
+      <p class="lede">Three cards, each from a different difficulty band.</p>
+    </header>
+    <main id="main" class="positions-play positions-play--triple">
+      <p class="play-status" id="play-status" role="status" aria-live="polite"></p>
+      <div class="play-strip" id="play-strip" tabindex="0" aria-label="Drawn cards, scroll horizontally"></div>
+      <div class="play-actions">
+        <button type="button" class="button button-shuffle" id="btn-shuffle" aria-label="Shuffle three new cards">
+          <svg
+            class="btn-shuffle-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M10.59 9.17 5.41 4 4 5.41l5.17 5.17 1.42-1.41zm3.91-5.17L16.54 6l-12.13 12.59L5.82 20 17.96 7.46 20 9.5V4h-5.5zm5.43 9.17-1.41-1.41-5.17 5.17L14.5 20H20V9.5l-2.04 2.04-3.03-3.03z"
+            />
+          </svg>
+          Shuffle
+        </button>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <p><a href="index.html">← Positions hub</a></p>
+    </footer>
+    <script src="../js/positions/positions-deck-data.js" defer></script>
+    <script src="../js/positions/play.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Footer from '../components/layout/Footer.astro';
+import Header from '../components/layout/Header.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main style="padding: var(--space-4); max-width: 52rem; margin: 0 auto;">
+    <slot />
+  </main>
+  <footer
+    style="padding: var(--space-4); color: var(--color-muted); font-size: 0.875rem; text-align: center;"
+  >
+    <slot name="footer">
+      <Footer />
+    </slot>
+  </footer>
+</BaseLayout>

@@ -1,0 +1,95 @@
+:root {
+  color-scheme: light dark;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans",
+    sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+
+  /* Rose → pink → violet (dark UI base) */
+  --color-bg: #12060e;
+  --color-surface: #1c0d16;
+  --color-surface-elevated: #26121f;
+  --color-text: #fce7f3;
+  --color-text-muted: #f0abfc;
+  --color-accent: #f472b6;
+  --color-accent-soft: rgba(244, 114, 182, 0.18);
+  --color-border: rgba(251, 207, 232, 0.12);
+
+  /* Home landing */
+  --home-bg-gradient: linear-gradient(
+    160deg,
+    #2a0a12 0%,
+    #3f0d1f 18%,
+    #5c1433 38%,
+    #7c1d4a 55%,
+    #6b2d6b 72%,
+    #4c1d6b 88%,
+    #2e1065 100%
+  );
+  --home-card-bg: rgba(255, 255, 255, 0.06);
+  --home-card-border: rgba(251, 207, 232, 0.14);
+  --home-card-border-hover: rgba(251, 207, 232, 0.35);
+  --home-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(244, 114, 182, 0.06) inset;
+  --home-card-shadow-hover: 0 14px 40px rgba(88, 28, 60, 0.45), 0 0 0 1px rgba(244, 114, 182, 0.12) inset;
+  --home-card-title: #fff5f8;
+  --home-card-sub: rgba(252, 211, 232, 0.88);
+  --home-card-soon-title: rgba(255, 245, 248, 0.82);
+  --home-card-soon-sub: rgba(244, 191, 212, 0.65);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.25);
+
+  --motion-duration: 220ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #fdf2f8;
+    --color-surface: #ffffff;
+    --color-surface-elevated: #fffafc;
+    --color-text: #4a044e;
+    --color-text-muted: #a21caf;
+    --color-accent: #db2777;
+    --color-accent-soft: rgba(219, 39, 119, 0.12);
+    --color-border: rgba(190, 24, 93, 0.12);
+    --shadow-soft: 0 12px 40px rgba(131, 24, 67, 0.08);
+    --shadow-card: 0 4px 20px rgba(131, 24, 67, 0.06);
+
+    --home-bg-gradient: linear-gradient(
+      165deg,
+      #fff1f2 0%,
+      #fce7f3 22%,
+      #fbcfe8 45%,
+      #f5d0fe 68%,
+      #ede9fe 100%
+    );
+    --home-card-bg: rgba(255, 255, 255, 0.72);
+    --home-card-border: rgba(190, 24, 93, 0.14);
+    --home-card-border-hover: rgba(168, 85, 247, 0.35);
+    --home-card-shadow: 0 8px 28px rgba(131, 24, 67, 0.1);
+    --home-card-shadow-hover: 0 14px 36px rgba(131, 24, 67, 0.14);
+    --home-card-title: #701a75;
+    --home-card-sub: rgba(112, 26, 117, 0.72);
+    --home-card-soon-title: rgba(112, 26, 117, 0.55);
+    --home-card-soon-sub: rgba(112, 26, 117, 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration: 0ms;
+  }
+}
