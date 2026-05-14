@@ -1,9 +1,12 @@
 /**
- * Play: three discover-style cards, each from a different difficulty band when possible.
+ * Play: four discover-style cards, one per difficulty band, ordered Easy → Challenging (left → right).
  * Uses global POSITIONS_DECK from positions-deck-data.js.
  */
 
 /** @typedef {{ cardNo?: number; id: string; title: string; description?: string; image?: string; difficulty?: string; energy?: string; flexibility?: string; intimacy?: string }} Position */
+
+/** Left-to-right: easiest → hardest (matches tier scale). */
+const DIFFICULTY_ORDER = ["easy", "moderate", "advanced", "challenging"];
 
 /**
  * @template T
@@ -44,40 +47,46 @@ function normDiff(v) {
 }
 
 /**
- * Pick up to three cards so each uses a different difficulty bucket when the deck allows it.
+ * Pick four cards: one random pick per difficulty bucket, ordered Easy → Challenging.
+ * If a bucket has no cards, fills from the rest of the deck (still four slots when possible).
  * @param {Position[]} deck
  * @returns {Position[]}
  */
-function pickThreeDistinctDifficulties(deck) {
+function pickFourOrderedByDifficulty(deck) {
   if (deck.length === 0) {
     return [];
-  }
-  if (deck.length <= 3) {
-    return pickNUnique(deck, deck.length);
   }
 
   /** @type {Record<string, Position[]>} */
   const groups = {};
   for (const p of deck) {
-    const k = normDiff(p.difficulty) || "unknown";
-    (groups[k] ||= []).push(p);
+    const k = normDiff(p.difficulty);
+    const key = DIFFICULTY_ORDER.includes(k) ? k : "other";
+    (groups[key] ||= []).push(p);
   }
 
-  const keys = shuffle(Object.keys(groups));
-  if (keys.length >= 3) {
-    const chosen = keys.slice(0, 3);
-    return chosen.map((key) => pickNUnique(groups[key], 1)[0]);
+  const usedIds = new Set();
+  /** @type {Position[]} */
+  const result = [];
+
+  for (const bucket of DIFFICULTY_ORDER) {
+    const pool = (groups[bucket] || []).filter((p) => !usedIds.has(p.id));
+    let card = null;
+    if (pool.length) {
+      card = pickNUnique(pool, 1)[0];
+    } else {
+      const rest = deck.filter((p) => !usedIds.has(p.id));
+      if (rest.length) {
+        card = pickNUnique(rest, 1)[0];
+      }
+    }
+    if (card) {
+      result.push(card);
+      usedIds.add(card.id);
+    }
   }
 
-  if (keys.length === 2) {
-    const a = pickNUnique(groups[keys[0]], 1)[0];
-    const b = pickNUnique(groups[keys[1]], 1)[0];
-    const pool = deck.filter((p) => p.id !== a.id && p.id !== b.id);
-    const c = pickNUnique(pool, 1)[0];
-    return shuffle([a, b, c]);
-  }
-
-  return pickNUnique(deck, 3);
+  return result;
 }
 
 /** @param {unknown} s */
@@ -266,13 +275,13 @@ function main() {
       return;
     }
 
-    const picked = pickThreeDistinctDifficulties(deck);
+    const picked = pickFourOrderedByDifficulty(deck);
     if (picked.length === 0) {
       status.textContent = "No cards in the deck.";
       return;
     }
 
-    status.textContent = `${picked.length} cards — scroll sideways to see each.`;
+    status.textContent = `${picked.length} cards — Easy on the left, harder to the right. Scroll sideways to see each.`;
     for (const card of picked) {
       strip.appendChild(createPlayDiscoverCard(card));
     }
